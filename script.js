@@ -13,7 +13,7 @@ document.getElementById('startTimer').addEventListener('click', function() {
     timerInterval = setInterval(() => {
         if (time <= 0) {
             clearInterval(timerInterval);
-            alert("KA BOOOOOOOOOOOOOOOOOM !");
+            showExplosionMessage("KA BOOOOOOOOOOOOOOOOOM !");
             document.getElementById('timerDisplay').innerText = "00:00"; // Reset display
         } else {
             time--;
@@ -21,6 +21,19 @@ document.getElementById('startTimer').addEventListener('click', function() {
         }
     }, 1000);
 });
+
+// Function to show explosion message
+function showExplosionMessage(message) {
+    const explosionDiv = document.createElement('div');
+    explosionDiv.className = 'explosion-message';
+    explosionDiv.innerText = message;
+    document.body.appendChild(explosionDiv);
+
+    // Remove the message after animation
+    setTimeout(() => {
+        explosionDiv.remove();
+    }, 3000); // Adjust time as needed
+}
 
 // Chronomètre
 let stopwatchInterval;
